@@ -20,25 +20,29 @@
     <?php $referNew = $block->getRefer($productId); ?>
 
     <?php if(isset($referNew) && count($referNew)):?>
-        <?php foreach ($referNew as $refer) : ?>
-            <?php if ($refer->getActive()) : ?>
-                <div class="product-refer" style="margin-bottom: 10px;">
-                    <?php if ($refer->getName() && $refer->getDescription()) : ?>
-                        <li><b>·</b>&nbsp;<?php echo $refer->getName(); ?><i>et al.</i>
-                            <?php /* @noEscape */ echo $refer->getDescription(); ?>
-                            <?php if ($refer->getFile()) : ?>
-                                DOI: <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?php /* @noEscape */ echo $refer->getFile(); ?>">
-                                <?php /* @noEscape */ echo $refer->getFile(); ?></a>.
-                            <?php endif; ?>
-                            <?php if ($refer->getFile_ext()) : ?>
-                                PubMed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?php /* @noEscape */ echo $refer->getFile_ext(); ?>">
-                                <?php /* @noEscape */ echo $refer->getFile_ext(); ?></a>.
-                            <?php endif; ?>
-                        </li>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+        <ul style='margin-bottom:10px;'>
+            <?php foreach ($referNew as $refer) : ?>
+                <?php if ($refer->getActive()) : ?>
+                    <li style='color:#000;margin-bottom:10px;'>
+                        <?php
+                            echo $refer->getLastname().', '.$refer->getInitialsname().(($refer->getPlural()=='yes')?' <i>et al</i>':'');
+                            echo ". \"".$refer->getArticle()."\" ".$refer->getJournal().' '.$refer->getIssue().':'.$refer->getPages().' ('.$refer->getYear().').';
+                            if(!empty($refer->getDoi())){
+                                $doi = $refer->getDoi();
+                                echo " <a href='http://www.ncbi.nlm.nih.gov/pubmed/?term=$doi' target='_blank'>DOI: $doi</a>.";
+                            }
+                            if(!empty($refer->getPubmed())){
+                                $pubmed = $refer->getPubmed();
+                                echo" <a href='http://www.ncbi.nlm.nih.gov/pubmed/?term=$pubmed' target='_blank'>PubMed: $pubmed</a>.";
+                            }
+                            if(!empty($refer->getApplication())){
+                                echo ' Application: '.$refer->getApplication().'.';
+                            }
+                        ?>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
     <?php else:?>
         There is no References for this product yet !
     <?php endif;?>

@@ -186,70 +186,130 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         }
 
         $fieldset->addField(
-            'name',
+            'lastname',
             'text',
             [
-                'name' => 'name',
-                'label' => __('Name'),
-                'title' => __('Question'),
+                'name' => 'lastname',
+                'label' => __('Lastname'),
+                'title' => __('Lastname'),
                 'required' => true,
                 'disabled' => $isElementDisabled
             ]
         );
-
         $fieldset->addField(
-            'description',
-            'textarea',
+            'initialsname',
+            'text',
             [
-                'name' => 'description',
+                'name' => 'initialsname',
+                'label' => __('Initialsname'),
+                'title' => __('Initialsname'),
+                'required' => true,
+                'disabled' => $isElementDisabled
+            ]
+        );
+        $fieldset->addField(
+            'article',
+            'text',
+            [
+                'name' => 'article',
                 'label' => __('Article'),
-                'title' => __('Answer'),
+                'title' => __('Article'),
+                'required' => true,
                 'disabled' => $isElementDisabled
             ]
         );
-
         $fieldset->addField(
-            'file',
+            'journal',
             'text',
             [
-                'name' => 'file',
-                'label' => __('DOI'),
-                'title' => __('file'),
+                'name' => 'journal',
+                'label' => __('Journal'),
+                'title' => __('Journal'),
+                'required' => true,
                 'disabled' => $isElementDisabled
             ]
         );
-
         $fieldset->addField(
-            'file_ext',
+            'issue',
             'text',
             [
-                'name' => 'file_ext',
-                'label' => __('PubMed'),
-                'title' => __('file_ext'),
+                'name' => 'issue',
+                'label' => __('Issue'),
+                'title' => __('Issue'),
+                'required' => true,
                 'disabled' => $isElementDisabled
             ]
         );
-
-        
+        $fieldset->addField(
+            'pages',
+            'text',
+            [
+                'name' => 'pages',
+                'label' => __('Pages'),
+                'title' => __('Pages'),
+                'required' => true,
+                'disabled' => $isElementDisabled
+            ]
+        );
+        $fieldset->addField(
+            'year',
+            'text',
+            [
+                'name' => 'year',
+                'label' => __('Year'),
+                'title' => __('Year'),
+                'required' => true,
+                'disabled' => $isElementDisabled
+            ]
+        );
+        $fieldset->addField(
+            'application',
+            'text',
+            [
+                'name' => 'application',
+                'label' => __('Application'),
+                'title' => __('Application'),
+                'disabled' => $isElementDisabled
+            ]
+        );
+        $fieldset->addField(
+            'pubmed',
+            'text',
+            [
+                'name' => 'pubmed',
+                'label' => __('Pubmed'),
+                'title' => __('Pubmed'),
+                'disabled' => $isElementDisabled
+            ]
+        );
+        $fieldset->addField(
+            'doi',
+            'text',
+            [
+                'name' => 'doi',
+                'label' => __('Doi'),
+                'title' => __('Doi'),
+                'disabled' => $isElementDisabled
+            ]
+        );
         $fieldset->addType(
             'categories',
-            '\Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Category')
-        ;
+            '\Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Category');
 
-
-        $fieldset->addField(
-            'customer_group',
-            'multiselect',
-            [
-                'name' => 'customer_group[]',
-                'label' => __('Customer Group'),
-                'title' => __('Customer Group'),
-                'required' => true,
-                'value' => [0,1,2,3],
-                'values' => $customerGroup,
-                'disabled' => $isElementDisabled
-            ]
-        );
+//
+//        $fieldset->addField(
+//            'customer_group',
+//            'multiselect',
+//            [
+//                'name' => 'customer_group[]',
+//                'label' => __('Customer Group'),
+//                'title' => __('Customer Group'),
+//                'required' => true,
+//                'value' => [0,1,2,3],
+//                'values' => $customerGroup,
+//                'disabled' => $isElementDisabled
+//            ]
+//        );
 
         $fieldset->addField(
             'category_group',
@@ -261,20 +321,20 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'values' => $this->toOptionArray(),
             ]
         );
-
-        $fieldset->addField(
-            'store',
-            'multiselect',
-            [
-                'name' => 'store[]',
-                'label' => __('Store'),
-                'title' => __('Store'),
-                'required' => true,
-                'value' => [0,1],
-                'values' => $this->systemStore->getStoreValuesForForm(false, true),
-                'disabled' => $isElementDisabled
-            ]
-        );
+//
+//        $fieldset->addField(
+//            'store',
+//            'multiselect',
+//            [
+//                'name' => 'store[]',
+//                'label' => __('Store'),
+//                'title' => __('Store'),
+//                'required' => true,
+//                'value' => [0,1],
+//                'values' => $this->systemStore->getStoreValuesForForm(false, true),
+//                'disabled' => $isElementDisabled
+//            ]
+//        );
 
         $fieldset->addField(
             'active',

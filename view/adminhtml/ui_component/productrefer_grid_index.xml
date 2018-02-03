@@ -103,34 +103,42 @@
 				</item>
 			</argument>
 		</column>
-		<column name="name">
+		<column name="lastname">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">Name</item>
+					<item name="label" translate="true" xsi:type="string">LastName</item>
 				</item>
 			</argument>
 		</column>
-		<column name="customer_group" class="Abm\ProductRefer\Ui\Component\Listing\Column\CustomerGroup">
+		<column name="article">
 			<argument name="data" xsi:type="array">
-				<item name="options" xsi:type="object">Magento\Customer\Model\Config\Source\Group</item>
 				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">select</item>
-            		<item name="dataType" xsi:type="string">multiselect</item>
-					<item name="label" translate="true" xsi:type="string">Customer Group</item>
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Article</item>
 				</item>
 			</argument>
 		</column>
-		<column name="store" class="Abm\ProductRefer\Ui\Component\Listing\Column\Store">
-			<argument name="data" xsi:type="array">
-			<item name="options" xsi:type="object">Magento\Store\Model\System\Store</item>
-				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">select</item>
-            		<item name="dataType" xsi:type="string">multiselect</item>
-					<item name="label" translate="true" xsi:type="string">Store</item>
-				</item>
-			</argument>
-		</column>
+		<!--<column name="customer_group" class="Abm\ProductRefer\Ui\Component\Listing\Column\CustomerGroup">-->
+			<!--<argument name="data" xsi:type="array">-->
+				<!--<item name="options" xsi:type="object">Magento\Customer\Model\Config\Source\Group</item>-->
+				<!--<item name="config" xsi:type="array">-->
+					<!--<item name="filter" xsi:type="string">select</item>-->
+            		<!--<item name="dataType" xsi:type="string">multiselect</item>-->
+					<!--<item name="label" translate="true" xsi:type="string">Customer Group</item>-->
+				<!--</item>-->
+			<!--</argument>-->
+		<!--</column>-->
+		<!--<column name="store" class="Abm\ProductRefer\Ui\Component\Listing\Column\Store">-->
+			<!--<argument name="data" xsi:type="array">-->
+			<!--<item name="options" xsi:type="object">Magento\Store\Model\System\Store</item>-->
+				<!--<item name="config" xsi:type="array">-->
+					<!--<item name="filter" xsi:type="string">select</item>-->
+            		<!--<item name="dataType" xsi:type="string">multiselect</item>-->
+					<!--<item name="label" translate="true" xsi:type="string">Store</item>-->
+				<!--</item>-->
+			<!--</argument>-->
+		<!--</column>-->
 		<column name="active" class="Abm\ProductRefer\Ui\Component\Listing\Column\Status">
             <argument name="data" xsi:type="array">
             <item name="options" xsi:type="object">Abm\ProductRefer\Model\Config\Source\Status</item>

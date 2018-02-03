@@ -112,17 +112,18 @@ class ProductRefer extends \Magento\Framework\View\Element\Template
      *
      * @return collection
      */
-    public function getRefer($productId)
+    public function getRefer()
     {
-        $categoryId = $this->getCategoryGroup($this->getCurrentCategoryIds());
-        $categoryIds = "',".str_replace(',',',|',$categoryId).",'";
-
+        $categoryIds = $this->getCurrentCategoryIds();
+        $sku = $this->getCurrentSku();
+        $sku = "[[:<:]]".$sku."[[:>:]]";
+        $categoryIdsStr = '';
+        foreach ($categoryIds as $cat){
+            $categoryIdsStr.= "[[:<:]]".$cat."[[:>:]]|";
+        }
+        $categoryIdsStr = substr($categoryIdsStr,0,-1);//remove the last |
         $collection = $this->getCollection();
-        $collection->getSelect()->where("store LIKE '%".$this->dataHelper->getStoreId()."%'");
-        $collection->getSelect()->where("customer_group LIKE '%".$this->getCustomerId()."%'");
-        $collection->getSelect()->where("products REGEXP '[[:<:]]".$productId."[[:>:]]' or concat(',',category_group,',') regexp concat($categoryIds)");
-
-
+        $collection->getSelect()->where("products REGEXP '$sku' OR category_group REGEXP '$categoryIdsStr'");
         return $collection;
     }
 

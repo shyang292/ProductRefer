@@ -78,12 +78,12 @@ class Save extends \Magento\Backend\App\Action
         if ($data) {
 //            print_r($data);die();
             $data = $this->dataProcessor->filter($data);
-            $customerGroup = $this->helper->getCustomerGroup($data['customer_group']);
+            //$customerGroup = $this->helper->getCustomerGroup($data['customer_group']);
             $categoryGroup = $this->helper->getCcategoryGroup((isset($data['category_group'])?$data['category_group']:"")); /*tony add*/
-            $store = $this->helper->getStores($data['store']);
-            $data['customer_group'] = $customerGroup;
+            //$store = $this->helper->getStores($data['store']);
+            //$data['customer_group'] = $customerGroup;
             $data['category_group'] = $categoryGroup; /*tony add*/
-            $data['store'] = $store;
+            //$data['store'] = $store;
 
             $model = $this->referModel;
             $id = $this->getRequest()->getParam('productrefer_id');
