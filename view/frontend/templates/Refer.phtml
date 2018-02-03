@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * Mageprince
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @package Abm_ProductRefer
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Abm\ProductRefer\Block\Refer */
+?>
+<?php if($block->isEnable()): ?>
+    <?php $productId = $block->getCurrentId(); ?>
+    <?php $referNew = $block->getRefer($productId); ?>
+
+    <?php if(isset($referNew) && count($referNew)):?>
+        <?php foreach ($referNew as $refer) : ?>
+            <?php if ($refer->getActive()) : ?>
+                <div class="product-refer" style="margin-bottom: 10px;">
+                    <?php if ($refer->getName() && $refer->getDescription()) : ?>
+                        <li><b>·</b>&nbsp;<?php echo $refer->getName(); ?><i>et al.</i>
+                            <?php /* @noEscape */ echo $refer->getDescription(); ?>
+                            <?php if ($refer->getFile()) : ?>
+                                DOI: <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?php /* @noEscape */ echo $refer->getFile(); ?>">
+                                <?php /* @noEscape */ echo $refer->getFile(); ?></a>.
+                            <?php endif; ?>
+                            <?php if ($refer->getFile_ext()) : ?>
+                                PubMed: <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=<?php /* @noEscape */ echo $refer->getFile_ext(); ?>">
+                                <?php /* @noEscape */ echo $refer->getFile_ext(); ?></a>.
+                            <?php endif; ?>
+                        </li>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php else:?>
+        There is no References for this product yet !
+    <?php endif;?>
+<?php endif; ?>

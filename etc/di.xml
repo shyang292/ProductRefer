@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageprince
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @package Abm_ProductRefer
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Abm\ProductRefer\Model\ResourceModel\ProductRefer\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">abm_productrefer</argument>
+            <argument name="resourceModel" xsi:type="string">Abm\ProductRefer\Model\ResourceModel\ProductRefer\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="productrefer_grid_index_data_source" xsi:type="string">Abm\ProductRefer\Model\ResourceModel\ProductRefer\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
